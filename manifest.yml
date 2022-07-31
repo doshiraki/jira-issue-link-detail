@@ -1,0 +1,20 @@
+modules:
+  jira:issuePanel:
+    - key: link-detail
+      resource: main
+      viewportSize: medium
+      title: link-detail
+      icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
+resources:
+  - key: main
+    path: out
+app:
+  id: ari:cloud:ecosystem::app/a81aeebe-c41b-49bd-b76c-4c75e23e9cf2
+permissions:
+  scopes:
+    - 'read:jira-user'
+    - 'read:jira-work'
+
+  content:
+    styles:
+      - 'unsafe-inline'
