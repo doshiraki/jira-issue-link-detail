@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import CssBaseline from '@mui/material/CssBaseline';
 
 export default function Document() {
     return (
@@ -17,6 +18,7 @@ export default function Document() {
                 */}
             </Head>
             <body>
+                <CssBaseline/>
                 <Main />
                 <NextScript />
             </body>

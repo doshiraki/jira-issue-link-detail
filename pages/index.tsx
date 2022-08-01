@@ -4,7 +4,8 @@ import {IssueLink as IssueLinkType, jira} from './api/atlassian/generate/jira'
 import {useState, useEffect} from 'react'
 import {useIssue} from './api/atlassian/issue'
 import { IssueLink } from './api/component/issuelink';
-import {useAppSelect} from './api/redux/store/hooks'
+import {useAppSelect} from './api/redux/store/hooks';
+import YAML from 'yaml'
 
 const Home: NextPage = () => {
   let context = useAppSelect((root)=>root.atlassian.context);
@@ -18,18 +19,14 @@ const Home: NextPage = () => {
 
   }, [issue]);
 
-  return <Grid container item xs={12} >
-      <Grid item sm={11}>
-        <Box>
-        <span style={{backgroundColor: "#ff88ff"}}>
-        {JSON.stringify(context)}
-        </span>
-        <span style={{backgroundColor: "#0022ff"}}>
-        {JSON.stringify(issue?.fields)}
-        </span>
+  return <Grid container item xs={12}>
         {issue ? <IssueLink data={issue?.fields?.["issuelinks"]} /> : <></>}
-        </Box>
-      </Grid>
+        <pre style={{backgroundColor: "#ff88ff"}}>
+        {YAML.stringify(context)}
+        </pre>
+        <pre style={{backgroundColor: "#8822ff"}}>
+        {YAML.stringify(issue?.fields)}
+        </pre>
     </Grid>
 }
 
